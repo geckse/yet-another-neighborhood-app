@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+
+import { Task } from './../../models/Task';
+import { SubTask } from './../../models/SubTask';
 
 @Component({
   selector: 'task-card',
@@ -6,6 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./task-card.component.scss'],
 })
 export class TaskCardComponent implements OnInit {
+
+  @Input() task: Task;
 
   constructor() { }
 

@@ -1,13 +1,13 @@
-<ion-card class="task-card">
+<ion-card class="task-card" [ngClass]="{'is-request': task.type == 'request', 'is-offer': task.type == 'offer'}">
 
   <user-row></user-row>
 
   <ion-card-header>
-    <ion-card-title>Einkaufen</ion-card-title>
+    <ion-card-title>{{task.name}}</ion-card-title>
   </ion-card-header>
 
   <ion-card-content>
-    Ich bräuchte jemanden, der mir ein paar Lebensmittel einkauft.
+    {{task.description}}
   </ion-card-content>
 
   <div class="footer-actions">

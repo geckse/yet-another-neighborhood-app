@@ -17,8 +17,8 @@ export class TaskService {
   private tasksCollection: AngularFirestoreCollection<Task>;
 
   constructor(private afs: AngularFirestore, private auth: AuthService) {
-    this.auth.getUid().then((userId)=>{
-      this.tasksCollection = this.afs.collection<Task>('tasks',  ref => ref.where('owner', '==', userId));
+    this.auth.getUid().then( (userId) => {
+      this.tasksCollection = this.afs.collection<Task>('tasks',  ref => ref.where('plz', '==', this.auth.currentUser.plz));
       this.tasks = this.tasksCollection.snapshotChanges().pipe(
           map(actions => {
             return actions.map(a => {
@@ -46,14 +46,24 @@ export class TaskService {
   }
 
   addTask(task: Task): Promise<DocumentReference> {
-    //task.owner = this.owner;
-    task = JSON.parse(JSON.stringify(task));
-    return this.tasksCollection.add(task);
+    return new Promise<any>((resolve, reject) => {
+      this.auth.getUid().then( (userId) => {
+        task.creator = userId;
+        task.plz = this.auth.currentUser.plz;
+        task = JSON.parse(JSON.stringify(task));
+        return resolve(this.tasksCollection.add(task));
+      });
+    });
   }
 
   updateTask(task: Task): Promise<void> {
-    // task.owner = this.owner;
-    return this.tasksCollection.doc(task.id).set(task);
+    return new Promise<any>((resolve, reject) => {
+      this.auth.getUid().then( (userId) => {
+        task.creator = userId;
+        task.plz = this.auth.currentUser.plz;
+        return resolve(this.tasksCollection.doc(task.id).set(task));
+      });
+    });
   }
 
   deleteTask(id: string): Promise<void> {

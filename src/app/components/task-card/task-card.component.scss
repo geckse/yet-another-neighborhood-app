@@ -2,6 +2,16 @@
 
   .task-card {
     padding-top: 16px;
+    &.is-request {
+      --ion-color-primary: var(--ion-color-secondary);
+      --ion-color-primary-tint: var(--ion-color-secondary-tint);
+      --ion-color-shade-tint: var(--ion-color-secondary-tint);
+    }
+    &.is-offer {
+      --ion-color-primary: var(--ion-color-tertiary);
+      --ion-color-primary-tint: var(--ion-color-tertiary-tint);
+      --ion-color-shade-tint: var(--ion-color-tertiary-tint);
+    }
   }
   .footer-actions {
     padding-left: 8px;

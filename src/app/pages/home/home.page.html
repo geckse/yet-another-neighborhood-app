@@ -57,7 +57,7 @@
           </ion-segment>
   </ion-list-header>
 
-  <task-card *ngFor="let number of [0,1,2]"></task-card>
+  <task-card *ngFor="let task of tasks" [task]="task"></task-card>
 
 </ion-content>
 
