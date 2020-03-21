@@ -18,6 +18,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/todo-list/todo-list.module').then( m => m.TodoListPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'task-detail/:taskId',
+    loadChildren: () => import('./pages/task-detail/task-detail.module').then( m => m.TaskDetailPageModule),
+    canActivate: [AuthGuard],
+  },
 ];
 
 @NgModule({

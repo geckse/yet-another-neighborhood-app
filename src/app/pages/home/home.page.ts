@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+import { AuthService } from './../../providers/auth-service/auth-service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,6 +13,6 @@ export class HomePage {
     slidesPerView: 'auto'
   };
 
-  constructor() {}
+  constructor(public auth: AuthService) {}
 
 }

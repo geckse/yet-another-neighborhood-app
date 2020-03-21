@@ -11,11 +11,11 @@
     <ion-toolbar>
       <ion-title size="large">
         Hey,<br/>
-        Daniel
+        {{ auth.currentUser?.displayName ? auth.currentUser.displayName : 'Du' }}
       </ion-title>
 
       <ion-avatar class="main-avatar ion-margin-end ion-margin-bottom" slot="end">
-        <img src="https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3A3c15b62e-9072-4cb1-94e6-82d76e04120e&params=version%3A0&token=1584834584_da39a3ee_01e2e1589ca87b17b2c88631ae58ba2d8cf919d2&api_key=CometServer1" />
+        <img src="{{ auth.currentUser?.photoURL ? auth.currentUser.photoURL : 'https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3A5603ac14-6d63-4298-8429-3e38968b89c0&params=version%3A0&token=1584886501_da39a3ee_3eb29bdf549d4f3bf5fc9d002872f6f25b9c8a73&api_key=CometServer1' }}" />
       </ion-avatar>
 
     </ion-toolbar>
@@ -35,12 +35,9 @@
         <ion-card-content>
         <h2>Hat der Daniel echt toll gemacht. Zu meiner vollsten Zufriedenheit!</h2>
         </ion-card-content>
-        <ion-item class="review-person" lines="none">
-          <ion-avatar slot="start">
-            <img src="https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3Ab078fa96-1d19-4549-8718-d1416b1c6732&params=version%3A0&token=1584834584_da39a3ee_01e2e1589ca87b17b2c88631ae58ba2d8cf919d2&api_key=CometServer1"/>
-          </ion-avatar>
-          <ion-label>Michaela Musterfrau</ion-label>
-        </ion-item>
+
+        <user-row></user-row>
+
       </ion-card>
 
     </ion-slide>
@@ -81,7 +78,7 @@
           <ion-col>
             <ion-button fill="clear">
               <ion-avatar slot="icon-only">
-                <img src="https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3A3c15b62e-9072-4cb1-94e6-82d76e04120e&params=version%3A0&token=1584834584_da39a3ee_01e2e1589ca87b17b2c88631ae58ba2d8cf919d2&api_key=CometServer1">
+                <img src="{{ auth.currentUser?.photoURL ? auth.currentUser.photoURL : 'https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3A5603ac14-6d63-4298-8429-3e38968b89c0&params=version%3A0&token=1584886501_da39a3ee_3eb29bdf549d4f3bf5fc9d002872f6f25b9c8a73&api_key=CometServer1' }}" />
               </ion-avatar>
             </ion-button>
           </ion-col>

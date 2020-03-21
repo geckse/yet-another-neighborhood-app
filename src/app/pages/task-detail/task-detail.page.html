@@ -1,0 +1,49 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{this.task?.name ? this.task.name : ''}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        {{this.task?.name ? this.task.name : ''}}
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <user-row>
+    21.03. 16:30
+  </user-row>
+
+  <div class="ion-padding">
+    <ion-text>
+      <p>{{this.task?.description ? this.task?.description : ''}}</p>
+    </ion-text>
+  </div>
+
+
+    <h2 class="ion-padding">Liste</h2>
+    <ion-list lines="none" *ngIf="task.items">
+      <ion-item *ngFor="let subtask of task.items">
+        <ion-button class="check-button" shape="round" fill="outline" slot="start">
+          <ion-icon name="checkmark-outline"></ion-icon>
+        </ion-button>
+        <ion-label>{{subtask.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+
+
+</ion-content>
+<ion-footer>
+    <div class="ion-padding">
+      <ion-button expand="block">Aufgabe übernehmen</ion-button>
+    </div>
+</ion-footer>
