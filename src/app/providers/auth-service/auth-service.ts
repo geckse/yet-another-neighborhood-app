@@ -37,15 +37,34 @@ export class AuthService {
     });
   }
 
+
+    /*
+      login with Email
+    */
+    public signupWithEmail(email: string, password: string, displayName: string, plz: number) {
+
+      return new Promise<any>((resolve, reject) => {
+        this.afAuth.auth.createUserWithEmailAndPassword(email,password)
+            .then( (usercred) => {
+              this.setUserData(usercred.user,displayName, plz);
+              resolve(this.currentUser);
+              console.log("Account create success", usercred.user);
+        }, (error) => {
+              console.log("Account create error", error);
+              reject(error);
+        });
+      });
+  }
+
   /*
     login with Email
   */
-  public signupWithEmail(email: string, password: string, displayName: string, plz: number) {
+  public enrichWithEmail(email: string, password: string, displayName: string, plz: number) {
     var credential = auth.EmailAuthProvider.credential(email, password);
     return new Promise<any>((resolve, reject) => {
       this.afAuth.auth.currentUser.linkAndRetrieveDataWithCredential(credential)
           .then( (usercred) => {
-            this.setUserData(usercred.user,displayName);
+            this.setUserData(usercred.user,displayName, plz);
             resolve(this.currentUser);
             console.log("Account linking success", usercred.user);
       }, (error) => {
@@ -99,13 +118,13 @@ export class AuthService {
   /* Setting up user data when sign in with username/password,
     sign up with username/password and sign in with social auth
     provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  private setUserData(user, displayName = "") {
+  private setUserData(user, displayName = "", plz = null) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
-    console.log('HERE',user);
     let userData: User = {
       uid: user.uid,
       lastLogin: new Date(),
       email: user.email,
+      plz: (plz ? plz : user.plz),
       displayName: (displayName ? displayName : user.displayName),
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
@@ -144,8 +163,12 @@ export class AuthService {
         logged in and setting up null when logged out */
       this.afAuth.authState.subscribe(user => {
         if (user) {
-            this.setUserData(user);
-            resolve(this.currentUser);
+            const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+            userRef.ref.get().then((doc)=>{
+              // @ts-ignore
+              this.currentUser = doc.data();
+              resolve(this.currentUser);
+            });
             // todo native storage fallback?
         } else {
           reject('session failed');

@@ -56,22 +56,21 @@ export class SignupPage implements OnInit {
       message: 'Lade...',
     });
     this.loading.present();
-    this.auth.signInAnonymously().then(() => {
 
-      this.auth.signupWithEmail(this.email,this.password, this.displayName, this.plz).then(() => {
-        this.router.navigate(['/home'], {
-        });
-        this.loading.dismiss();
-      }).catch(async (e)=>{
-        const alert = await this.alertController.create({
-          header: 'Ooops!',
-          message: e,
-          buttons: ['OK']
-        });
-        await alert.present();
-        this.loading.dismiss();
+    this.auth.signupWithEmail(this.email,this.password, this.displayName, this.plz).then(() => {
+      this.router.navigate(['/home'], {
       });
+      this.loading.dismiss();
+    }).catch(async (e)=>{
+      const alert = await this.alertController.create({
+        header: 'Ooops!',
+        message: e,
+        buttons: ['OK']
+      });
+      await alert.present();
+      this.loading.dismiss();
     });
+
   }
 
 }
