@@ -1,0 +1,90 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Home
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Hey,<br/>
+      </ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <ion-title size="large">
+        Daniel
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <!-- reviews -->
+  <ion-list-header>
+    <ion-label>Letzte Bewertungen</ion-label>
+  </ion-list-header>
+
+  <ion-slides class="review-slider" [options]="slideOpts">
+    <ion-slide class="ion-text-left" *ngFor="let number of [0,1,2]">
+
+      <ion-card class="review-card">
+
+        <ion-card-content>
+        <h2>Hat der Daniel echt toll gemacht. Zu meiner vollsten Zufriedenheit!</h2>
+        </ion-card-content>
+        <ion-item class="review-person" lines="none">
+          <ion-avatar slot="start">
+            <img src="https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3Ab078fa96-1d19-4549-8718-d1416b1c6732&params=version%3A0&token=1584834584_da39a3ee_01e2e1589ca87b17b2c88631ae58ba2d8cf919d2&api_key=CometServer1"/>
+          </ion-avatar>
+          <ion-label>Michaela Musterfrau</ion-label>
+        </ion-item>
+      </ion-card>
+
+    </ion-slide>
+  </ion-slides>
+
+  <!-- Feed -->
+  <ion-list-header class="ion-justify-items-start">
+          <div class="ion-padding-end">
+            <ion-label>Hier kannst du helfen!</ion-label>
+          </div>
+          <ion-segment (ionChange)="segmentChanged($event)" class="ion-float-sm-right" style="max-width: 180px;">
+            <ion-segment-button value="friends">
+              <ion-label>Ich suche</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="enemies">
+              <ion-label>Ich biete</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+  </ion-list-header>
+
+  <task-card></task-card>
+
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-button fill="clear"><ion-icon slot="icon-only" name="albums-outline"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button fill="clear"><ion-icon slot="icon-only" name="checkmark-circle-outline"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button fill="clear"><ion-icon slot="icon-only" name="options-outline"></ion-icon></ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button fill="clear">
+              <ion-avatar slot="icon-only">
+                <img src="https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3A3c15b62e-9072-4cb1-94e6-82d76e04120e&params=version%3A0&token=1584834584_da39a3ee_01e2e1589ca87b17b2c88631ae58ba2d8cf919d2&api_key=CometServer1">
+              </ion-avatar>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+  </ion-toolbar>
+</ion-footer>

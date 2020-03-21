@@ -1,10 +1,12 @@
 // Ionic Variables and Theming. For more info, please see:
 // http://ionicframework.com/docs/theming/
 
+@import "https://use.typekit.net/ccu5kji.css";
+
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #FF952B;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -74,9 +76,15 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /*
+    CUSTOM FONT AREA
+  */
+  --ion-font-family: 'circe', sans-serif;
+
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark-temp) {
   /*
    * Dark Colors
    * -------------------------------------------
