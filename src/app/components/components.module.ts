@@ -5,9 +5,11 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 
 import { TaskCardComponent } from './task-card/task-card.component';
+import { UserRowComponent } from './user-row/user-row.component';
 
 export const components = [
-  TaskCardComponent
+  TaskCardComponent,
+  UserRowComponent
 ];
 
 export const pipes = [
