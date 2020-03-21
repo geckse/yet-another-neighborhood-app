@@ -1,6 +1,12 @@
 
 :host {
   ::ng-deep {
+
+    ion-content ion-header .main-avatar {
+      width: 90px;
+      height: 90px;
+    }
+
     .review-slider {
       ion-slide {
         width: 320px;

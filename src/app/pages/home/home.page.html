@@ -11,12 +11,13 @@
     <ion-toolbar>
       <ion-title size="large">
         Hey,<br/>
-      </ion-title>
-    </ion-toolbar>
-    <ion-toolbar>
-      <ion-title size="large">
         Daniel
       </ion-title>
+
+      <ion-avatar class="main-avatar ion-margin-end ion-margin-bottom" slot="end">
+        <img src="https://public-v2links.adobecc.com/7d015bd3-353b-4a6d-572d-0b3af93a9de4/component?params=component_id%3A3c15b62e-9072-4cb1-94e6-82d76e04120e&params=version%3A0&token=1584834584_da39a3ee_01e2e1589ca87b17b2c88631ae58ba2d8cf919d2&api_key=CometServer1" />
+      </ion-avatar>
+
     </ion-toolbar>
   </ion-header>
 
@@ -60,11 +61,11 @@
           </ion-segment>
   </ion-list-header>
 
-  <task-card></task-card>
+  <task-card *ngFor="let number of [0,1,2]"></task-card>
 
 </ion-content>
 
-<ion-footer>
+<ion-footer [translucent]="true">
     <ion-toolbar>
       <ion-grid>
         <ion-row>
