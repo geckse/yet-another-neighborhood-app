@@ -1,0 +1,12 @@
+:host {
+  ion-content {
+    --background: var(--ion-color-primary);
+    ::ng-deep {
+      ion-item, ion-list, ion-toolbar {
+        --ion-text-color: #fff;
+        --background: rgba(0,0,0,0);
+        --ion-background-color: transparent !important;
+      }
+    }
+  }
+}

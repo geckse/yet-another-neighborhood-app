@@ -4,16 +4,21 @@ import { AuthService } from './../../providers/auth-service/auth-service';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { CanActivate, ActivatedRouteSnapshot,Router,  RouterStateSnapshot } from '@angular/router';
 
+import { User } from '../../models/User';
+
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.page.html',
-  styleUrls: ['./login.page.scss'],
+  selector: 'app-signup',
+  templateUrl: './signup.page.html',
+  styleUrls: ['./signup.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class SignupPage implements OnInit {
 
   loading: any;
   email: string = "";
   password: string = "";
+  confirmPassword: string = "";
+  displayName: string = "";
+  plz: number;
 
   constructor(
     public auth: AuthService,
@@ -46,29 +51,26 @@ export class LoginPage implements OnInit {
     });
   }
 
-  async continueAnon(){
+  async registerAccount(){
     this.loading = await this.loadingController.create({
       message: 'Lade...',
     });
     this.loading.present();
-
     this.auth.signInAnonymously().then(() => {
-      this.router.navigate(['/home'], {
-      });
-      this.loading.dismiss();
-    }).catch(async (e)=>{
-      const alert = await this.alertController.create({
-        header: 'Ooops!',
-        message: e,
-        buttons: ['OK']
-      });
-      await alert.present();
-      this.loading.dismiss();
-    });
-  }
 
-  openRegisterPage(){
-    this.router.navigate(['/sign-up'], {
+      this.auth.signupWithEmail(this.email,this.password, this.displayName, this.plz).then(() => {
+        this.router.navigate(['/home'], {
+        });
+        this.loading.dismiss();
+      }).catch(async (e)=>{
+        const alert = await this.alertController.create({
+          header: 'Ooops!',
+          message: e,
+          buttons: ['OK']
+        });
+        await alert.present();
+        this.loading.dismiss();
+      });
     });
   }
 

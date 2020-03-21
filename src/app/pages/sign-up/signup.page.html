@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      Registrieren
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Registrieren
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+        <ion-list>
+          <ion-item lines="none">
+            <ion-icon name="person-outline" slot="start"></ion-icon>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input [(ngModel)]="displayName"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="pin-outline" slot="start"></ion-icon>
+            <ion-label position="stacked">PLZ</ion-label>
+            <ion-input [(ngModel)]="plz"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="mail-outline"  slot="start"></ion-icon>
+            <ion-label position="stacked">E-Mail</ion-label>
+            <ion-input [(ngModel)]="email" type="email"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-label position="stacked">Passwort</ion-label>
+            <ion-input [(ngModel)]="password" type="password"></ion-input>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
+            <ion-label position="stacked">Passwort bestätigen</ion-label>
+            <ion-input [(ngModel)]="confirmPassword" type="password"></ion-input>
+          </ion-item>
+        </ion-list>
+
+        <ion-button expand="block" color="white" (click)="registerAccount()" [disabled]=' this.email == "" || this.displayName == "" || this.password == "" || this.confirmPassword == "" || this.plz == "" '>Registrieren <ion-icon slot="lock-open-outline"></ion-icon></ion-button>
+        <ion-button color="white" fill="clear" expand="block" routerDirection="back" routerLink="/login" (click)="openRegisterPage()">Abbrechen</ion-button>
+
+        <div style="min-height: 50px;"></div>
+
+</ion-content>

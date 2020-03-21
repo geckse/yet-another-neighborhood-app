@@ -13,16 +13,26 @@
             <ion-input [(ngModel)]="email" type="email"></ion-input>
           </ion-item>
           <ion-item lines="none" class="ion-justify-content-center">
-            <ion-icon name="lock-open-outline" slot="start"></ion-icon>
+            <ion-icon name="lock-closed-outline" slot="start"></ion-icon>
             <ion-label position="stacked">Passwort</ion-label>
             <ion-input [(ngModel)]="password" type="password"></ion-input>
           </ion-item>
         </ion-list>
-        <br/>
-        <ion-button expand="block" (click)="submitLogin()">Absenden</ion-button>
-        <ion-button fill="clear"  expand="block" (click)="continueAnon()">ohne Account weiter</ion-button>
+
+        <ion-button expand="block" color="white" (click)="submitLogin()">Einloggen <ion-icon slot="lock-open-outline"></ion-icon></ion-button>
+
+        <div style="min-height: 50px;"></div>
+
+        <ion-note color="white"><small>Noch kein Account?</small></ion-note>
+        <ion-button color="white" fill="clear" expand="block" (click)="openRegisterPage()">Registrieren</ion-button>
       </div>
     </ion-col>
   </ion-row>
 
 </ion-content>
+
+<ion-footer>
+    <div class="ion-padding">
+      <ion-button color="white" fill="clear" expand="block" (click)="continueAnon()">Ohne Account Weiter</ion-button>
+    </div>
+</ion-footer>

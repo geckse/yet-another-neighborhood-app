@@ -9,6 +9,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule),
   },
   {
+    path: 'sign-up',
+    loadChildren: () => import('./pages/sign-up/signup.module').then( m => m.SignupPageModule),
+  },
+  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
     canActivate: [AuthGuard],

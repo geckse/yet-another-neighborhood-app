@@ -40,15 +40,15 @@ export class AuthService {
   /*
     login with Email
   */
-  public signupWithEmail(email: string, password: string) {
+  public signupWithEmail(email: string, password: string, displayName: string, plz: number) {
     var credential = auth.EmailAuthProvider.credential(email, password);
     return new Promise<any>((resolve, reject) => {
       this.afAuth.auth.currentUser.linkAndRetrieveDataWithCredential(credential)
-          .then(function (usercred) {
-            this.setUserData(usercred.user);
+          .then( (usercred) => {
+            this.setUserData(usercred.user,displayName);
             resolve(this.currentUser);
             console.log("Account linking success", usercred.user);
-      }, function (error) {
+      }, (error) => {
             console.log("Account linking error", error);
             reject(error);
       });
@@ -99,17 +99,17 @@ export class AuthService {
   /* Setting up user data when sign in with username/password,
     sign up with username/password and sign in with social auth
     provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  private setUserData(user) {
+  private setUserData(user, displayName = "") {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    console.log('HERE',user);
     let userData: User = {
       uid: user.uid,
       lastLogin: new Date(),
       email: user.email,
-      displayName: user.displayName,
+      displayName: (displayName ? displayName : user.displayName),
       photoURL: user.photoURL,
       emailVerified: user.emailVerified,
     }
-
     this.currentUser = user;
 
     return userRef.set(userData, {
