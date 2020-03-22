@@ -48,8 +48,10 @@ export class TaskService {
   addTask(task: Task): Promise<DocumentReference> {
     return new Promise<any>((resolve, reject) => {
       this.auth.getUid().then( (userId) => {
+        // @ts-ignore
         task.creator = userId;
         task.plz = this.auth.currentUser.plz;
+        task.createdAt = new Date();
         task = JSON.parse(JSON.stringify(task));
         return resolve(this.tasksCollection.add(task));
       });
@@ -59,6 +61,7 @@ export class TaskService {
   updateTask(task: Task): Promise<void> {
     return new Promise<any>((resolve, reject) => {
       this.auth.getUid().then( (userId) => {
+        // @ts-ignore
         task.creator = userId;
         task.plz = this.auth.currentUser.plz;
         return resolve(this.tasksCollection.doc(task.id).set(task));

@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { ComponentsModule } from './../../components/components.module';
 
 import { HomePage } from './home.page';
+import { AddTaskPageModule } from './../add-task/add-task.module';
 
 @NgModule({
   imports: [
@@ -14,6 +15,7 @@ import { HomePage } from './home.page';
     FormsModule,
     IonicModule,
     ComponentsModule,
+    AddTaskPageModule,
     RouterModule.forChild([
       {
         path: '',

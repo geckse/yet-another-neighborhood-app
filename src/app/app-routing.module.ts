@@ -26,7 +26,7 @@ const routes: Routes = [
     path: 'task-detail/:taskId',
     loadChildren: () => import('./pages/task-detail/task-detail.module').then( m => m.TaskDetailPageModule),
     canActivate: [AuthGuard],
-  },
+  }
 ];
 
 @NgModule({

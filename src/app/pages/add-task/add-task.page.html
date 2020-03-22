@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="dismiss()">Abbrechen</ion-button>
+    </ion-buttons>
+    <ion-title>
+      Neuer Beitrag
+    </ion-title>
+    <ion-buttons slot="primary">
+      <ion-button (click)="submit()">Absenden</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">
+        Neuer Beitrag
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list class="ion-padding-top">
+
+    <ion-item class="task-title" [ngClass]="{'hide-me': mode == 'message'}">
+      <ion-input [(ngModel)]="task.name" spellcheck="true"  placeholder="Titel des Tasks"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-textarea [(ngModel)]="task.description" [autoGrow]="true" rows="6" spellcheck="true"  [placeholder]="descriptionPlaceholder()"></ion-textarea>
+    </ion-item>
+
+    <ion-item (click)="switchMode('message')">
+      <ion-checkbox color="light" slot="start" [checked]="this.mode=='message'"></ion-checkbox>
+      <ion-label><ion-icon name="chatbubble-outline"></ion-icon> Nachricht <br/>
+      Einfach nur an eine Nachricht an deine Nachbarn ❤️</ion-label>
+    </ion-item>
+    <ion-item (click)="switchMode('offer')">
+      <ion-checkbox color="secondary" slot="start" [checked]="this.mode=='offer'"></ion-checkbox>
+      <ion-label><ion-icon name="alert-outline"></ion-icon> Angebot <br/>
+      Du bietest etwas an</ion-label>
+    </ion-item>
+    <ion-item (click)="switchMode('request')">
+      <ion-checkbox color="tertiary" slot="start" [checked]="this.mode=='request'"></ion-checkbox>
+      <ion-label><ion-icon name="help-outline"></ion-icon> Anfrage <br/>
+      Du brauchst etwas</ion-label>
+    </ion-item>
+
+
+  </ion-list>
+
+</ion-content>
+
+<ion-footer>
+    <div class="ion-padding">
+      <ion-button expand="block" (click)="submit()">Absenden</ion-button>
+    </div>
+</ion-footer>

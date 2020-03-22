@@ -59,6 +59,12 @@
 
   <task-card *ngFor="let task of tasks" [task]="task"></task-card>
 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="openMessageModal()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
 </ion-content>
 
 <ion-footer [translucent]="true">

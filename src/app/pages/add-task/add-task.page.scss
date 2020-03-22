@@ -1,0 +1,9 @@
+:host {
+
+  .task-title {
+    &.hide-me {
+      visibility: hidden;
+    }
+  }
+
+}
