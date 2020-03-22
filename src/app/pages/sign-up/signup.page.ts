@@ -30,34 +30,28 @@ export class SignupPage implements OnInit {
   ngOnInit() {
   }
 
-  async signIn(){
-    this.loading = await this.loadingController.create({
-      message: 'Lade...',
-    });
-    this.loading.present();
-
-    this.auth.signInAnonymously().then(() => {
-      this.router.navigate(['/home'], {
-      });
-      this.loading.dismiss();
-    }).catch(async (e)=>{
+  async registerAccount(){
+    // @ts-ignore
+    if(String(parseInt(this.plz)).length != 5){
       const alert = await this.alertController.create({
-        header: 'Ooops!',
-        message: e,
-        buttons: ['OK']
+        header: 'Ungültige Postleitzahl',
+        subHeader: 'Bitte gebe eine gültige Postleitzahl an.',
+        buttons: [{
+          text: 'OK',
+          handler: () => {
+          }
+        }]
       });
       await alert.present();
-      this.loading.dismiss();
-    });
-  }
+    }
 
-  async registerAccount(){
+
     this.loading = await this.loadingController.create({
       message: 'Lade...',
     });
     this.loading.present();
 
-    this.auth.signupWithEmail(this.email,this.password, this.displayName, this.plz).then(() => {
+    this.auth.signupWithEmail(this.email,this.password, this.displayName, this.plz ).then(() => {
       this.router.navigate(['/home'], {
       });
       this.loading.dismiss();

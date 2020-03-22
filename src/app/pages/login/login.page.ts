@@ -97,7 +97,7 @@ export class LoginPage implements OnInit {
                 subHeader: 'Bitte gebe eine gültige Postleitzahl an.',
                 buttons: [{
                   text: 'OK',
-                  hander: () => {
+                  handler: () => {
                       this.continueAnon();
                   }
                 }]
