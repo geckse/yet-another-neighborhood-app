@@ -47,8 +47,7 @@ export class TaskService {
 
   addTask(task: Task): Promise<DocumentReference> {
     return new Promise<any>((resolve, reject) => {
-      this.auth.getUid().then( (userId) => {
-        // @ts-ignore
+      this.auth.getUid().then( (userId :string) => {
         task.creator = userId;
         task.plz = this.auth.currentUser.plz;
         task.createdAt = new Date();
@@ -60,8 +59,7 @@ export class TaskService {
 
   updateTask(task: Task): Promise<void> {
     return new Promise<any>((resolve, reject) => {
-      this.auth.getUid().then( (userId) => {
-        // @ts-ignore
+      this.auth.getUid().then( (userId :string) => {
         task.creator = userId;
         task.plz = this.auth.currentUser.plz;
         return resolve(this.tasksCollection.doc(task.id).set(task));
@@ -75,8 +73,8 @@ export class TaskService {
 
   acceptTask(task: Task): Promise<void> {
     return new Promise<any>((resolve, reject) => {
-      this.auth.getUid().then( (userId: any) => {
-        userId = String(userId);
+      this.auth.getUid().then( (userId: string) => {
+        userId = userId;
         if(!task.applicants) task.applicants = [];
         if(task.applicants.indexOf(userId) == -1){
            task.applicants.push(userId);
@@ -90,8 +88,8 @@ export class TaskService {
 
   resignTask(task: Task): Promise<void> {
     return new Promise<any>((resolve, reject) => {
-      this.auth.getUid().then( (userId: any) => {
-        userId = String(userId);
+      this.auth.getUid().then( (userId: string) => {
+        userId = userId;
         if(!task.applicants) task.applicants = [];
         if(task.applicants.indexOf(userId) != -1){
            task.applicants.splice(task.applicants.indexOf(userId),1);
