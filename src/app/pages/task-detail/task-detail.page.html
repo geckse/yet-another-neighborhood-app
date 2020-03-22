@@ -43,7 +43,6 @@
 
 </ion-content>
 <ion-footer [ngClass]="{'type-offer': task?.type == 'offer', 'type-request': task?.type == 'request'}">
-  <ion-button expand="full" fill="clear">
-    {{task?.type == 'request' ? 'Aufgabe übernehmen' : 'Angebot beanspruchen' }}
-  </ion-button>
+  <ion-button expand="full" fill="clear" (click)="acceptTask()" *ngIf="!auth.currentUser || !task?.applicants || task?.applicants.indexOf(auth.currentUser.uid) == -1">{{task?.type == 'request' ? 'Aufgabe übernehmen' : 'Angebot beanspruchen' }}</ion-button>
+  <ion-button expand="full" fill="clear" (click)="resignTask()" *ngIf="task?.applicants && task?.applicants.indexOf(auth.currentUser.uid) != -1">Zurücktreten</ion-button>
 </ion-footer>

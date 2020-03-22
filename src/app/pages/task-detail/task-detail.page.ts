@@ -32,14 +32,14 @@ export class TaskDetailPage implements OnInit {
       });
     });
 
-    /*
-    this.task.items = [sub];
-    this.taskService.addTask(this.task).then((task)=>{
-      console.log('HERE');
-      console.log(task);
-    }).catch((e) => {
-      console.log(e);
-    });*/
   }
+
+  acceptTask(){
+    this.taskService.acceptTask(this.task);
+  }
+  resignTask(){
+    this.taskService.resignTask(this.task);
+  }
+
 
 }
