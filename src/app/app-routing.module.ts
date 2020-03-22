@@ -26,6 +26,11 @@ const routes: Routes = [
     path: 'task-detail/:taskId',
     loadChildren: () => import('./pages/task-detail/task-detail.module').then( m => m.TaskDetailPageModule),
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'settings',
+    loadChildren: () => import('./pages/settings/settings.module').then( m => m.SettingsPageModule),
+    canActivate: [AuthGuard],
   }
 ];
 

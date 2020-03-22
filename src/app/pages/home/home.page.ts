@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { NavController } from '@ionic/angular';
+
 import { AuthService } from './../../providers/auth-service/auth-service';
 import { TaskService } from './../../providers/task-service/task-service';
 
@@ -27,7 +29,8 @@ export class HomePage implements OnInit {
     public auth: AuthService,
     public taskService: TaskService,
     private modalController: ModalController,
-    private routerOutlet: IonRouterOutlet) {
+    private routerOutlet: IonRouterOutlet,
+    public navCtrl: NavController) {
   }
 
 
@@ -48,6 +51,8 @@ export class HomePage implements OnInit {
     modal.present();
   }
 
-
+  gotoSettings(){
+    this.navCtrl.navigateForward('/settings');
+  }
 
 }

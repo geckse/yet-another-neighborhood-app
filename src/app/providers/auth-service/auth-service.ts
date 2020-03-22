@@ -23,10 +23,10 @@ export class AuthService {
   /*
     use Annonymous login
   */
-  public signInAnonymously() {
+  public signInAnonymously(plz: number) {
     return new Promise<any>((resolve, reject) => {
         this.afAuth.auth.signInAnonymously().then((data) => {
-          this.setUserData(data.user);
+          this.setUserData(data.user,null,plz);
           resolve(this.currentUser);
         }).catch((error) => {
           // Handle Errors here.
@@ -79,6 +79,7 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
+        console.log(result);
         this.setUserData(result);
         resolve(this.currentUser);
       }).catch((error) => {
