@@ -79,9 +79,12 @@ export class AuthService {
     return new Promise<any>((resolve, reject) => {
       this.afAuth.auth.signInWithEmailAndPassword(email, password)
       .then((result) => {
-        console.log(result);
-        this.setUserData(result);
-        resolve(this.currentUser);
+        const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${result.user.uid}`);
+        userRef.ref.get().then((doc)=>{
+          // @ts-ignore
+          this.currentUser = doc.data();
+          resolve(this.currentUser);
+        });
       }).catch((error) => {
         reject(error);
       });
@@ -122,7 +125,9 @@ export class AuthService {
   private setUserData(user, displayName = "", plz = null) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
 
-    console.log(user,displayName,plz);
+    // todo: ENSURE everywhere plz is number
+    // @ts-ignore
+    plz = parseInt(plz);
 
     let userData: User = {
       uid: user.uid,
@@ -134,7 +139,6 @@ export class AuthService {
       emailVerified: user.emailVerified,
     }
     this.currentUser = user;
-
     return userRef.set(userData, {
       merge: true
     });
