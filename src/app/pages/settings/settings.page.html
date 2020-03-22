@@ -24,15 +24,15 @@
   </ion-list-header>
 
   <ion-list *ngIf="auth">
-    <ion-item>
+    
+    <ion-item *ngIf="auth.currentUser?.displayName">
       <ion-label position="stacked">Name</ion-label>
       <ion-input [(ngModel)]="auth?.currentUser.displayName"></ion-input>
     </ion-item>
-    <ion-item>
+    <ion-item *ngIf="auth.currentUser?.displayName">
       <ion-label position="stacked">E-Mail</ion-label>
       <ion-input [(ngModel)]="auth?.currentUser.email"></ion-input>
     </ion-item>
-
     <ion-item>
       <ion-label position="stacked">Postleitzahl deiner Nachbarschaft</ion-label>
       <ion-input [(ngModel)]="auth?.currentUser.plz"></ion-input>
