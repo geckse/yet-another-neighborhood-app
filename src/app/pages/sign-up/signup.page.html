@@ -46,7 +46,7 @@
           </ion-item>
         </ion-list>
 
-        <ion-button expand="block" color="white" (click)="registerAccount()" [disabled]=' this.email == "" || this.displayName == "" || this.password == "" || this.confirmPassword == "" || this.plz == "" '>Registrieren <ion-icon slot="lock-open-outline"></ion-icon></ion-button>
+        <ion-button expand="block" color="white" (click)="registerAccount()" [disabled]=' this.email == "" || this.displayName == "" || this.password == "" || this.confirmPassword == "" || this.plz == 0 '>Registrieren <ion-icon slot="lock-open-outline"></ion-icon></ion-button>
         <ion-button color="white" fill="clear" expand="block" routerDirection="back" routerLink="/login" (click)="openRegisterPage()">Abbrechen</ion-button>
 
         <div style="min-height: 50px;"></div>
