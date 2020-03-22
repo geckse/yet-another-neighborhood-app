@@ -20,7 +20,7 @@ export class TaskDetailPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private taskService: TaskService,
-    private auth: AuthService,
+    public auth: AuthService,
   ) { }
 
   ngOnInit() {
