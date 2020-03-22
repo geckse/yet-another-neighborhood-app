@@ -4,6 +4,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Task } from './../../models/Task';
 import { SubTask } from './../../models/SubTask';
 
+import { AuthService } from './../../providers/auth-service/auth-service';
 import { TaskService } from './../../providers/task-service/task-service';
 
 @Component({
@@ -19,18 +20,18 @@ export class TaskDetailPage implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private taskService: TaskService,
+    private auth: AuthService,
   ) { }
 
   ngOnInit() {
     this.taskId = this.activatedRoute.snapshot.paramMap.get('taskId');
-    this.task = new Task();
-    this.task.creator = "Nutzer";
-    this.task.name = "Mein Test Task";
-    this.task.plz = 12345;
-    this.task.description = "Das ist ein Test Task";
 
-    let sub = new SubTask();
-    sub.name = "Punkt 1";
+    this.auth.isReady().then( (userId) => {
+      this.taskService.getTask(this.taskId).subscribe((task)=>{
+        this.task = task;
+      });
+    });
+
     /*
     this.task.items = [sub];
     this.taskService.addTask(this.task).then((task)=>{

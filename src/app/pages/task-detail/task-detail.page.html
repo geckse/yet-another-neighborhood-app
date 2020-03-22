@@ -1,4 +1,4 @@
-<ion-header [translucent]="true">
+<ion-header [ngClass]="{'type-offer': task?.type == 'offer', 'type-request': task?.type == 'request'}">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
@@ -10,18 +10,18 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header collapse="condense" [ngClass]="{'type-offer': task?.type == 'offer', 'type-request': task?.type == 'request'}">
     <ion-toolbar>
       <ion-title size="large">
         {{this.task?.name ? this.task.name : ''}}
       </ion-title>
     </ion-toolbar>
+    <ion-toolbar>
+        <user-row>
+          {{ task?.due ? task.due : '' }}
+        </user-row>
+    </ion-toolbar>
   </ion-header>
-
-
-  <user-row>
-    21.03. 16:30
-  </user-row>
 
   <div class="ion-padding">
     <ion-text>
@@ -30,9 +30,9 @@
   </div>
 
 
-    <h2 class="ion-padding">Liste</h2>
-    <ion-list lines="none" *ngIf="task.items">
-      <ion-item *ngFor="let subtask of task.items">
+    <h2 class="ion-padding" *ngIf="this.task?.items">Liste</h2>
+    <ion-list lines="none" *ngIf="this.task?.items">
+      <ion-item *ngFor="let subtask of this.task.items">
         <ion-button class="check-button" shape="round" fill="outline" slot="start">
           <ion-icon name="checkmark-outline"></ion-icon>
         </ion-button>
@@ -42,8 +42,8 @@
 
 
 </ion-content>
-<ion-footer>
-    <div class="ion-padding">
-      <ion-button expand="block">Aufgabe übernehmen</ion-button>
-    </div>
+<ion-footer [ngClass]="{'type-offer': task?.type == 'offer', 'type-request': task?.type == 'request'}">
+  <ion-button expand="full" fill="clear">
+    {{task?.type == 'request' ? 'Aufgabe übernehmen' : 'Angebot beanspruchen' }}
+  </ion-button>
 </ion-footer>

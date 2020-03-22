@@ -3,6 +3,7 @@ import { SubTask } from './SubTask';
 export class Task {
   id: string;
   creator: string;
+  applicants: Array<string>;
   type: string;
   dueAt: Date;
   createdAt: Date;

@@ -14,7 +14,7 @@ import { SubTask } from './../../models/SubTask';
 export class AddTaskPage implements OnInit {
 
   task: Task;
-  mode: string = "message";
+  mode: string = "offer";
 
   loading: any = null;
 
@@ -27,6 +27,7 @@ export class AddTaskPage implements OnInit {
     this.task = new Task;
     this.task.name = "";
     this.task.description = "";
+    this.task.items = [];
   }
 
   switchMode(mode: string){

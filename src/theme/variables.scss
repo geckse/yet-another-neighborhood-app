@@ -79,6 +79,9 @@
     --ion-color-tint: var(--ion-color-white-tint);
   }
 
+  ion-button.button-solid {
+    --color: var(--ion-color-white);
+  }
 
 }
 

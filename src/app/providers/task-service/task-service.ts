@@ -18,7 +18,7 @@ export class TaskService {
 
   constructor(private afs: AngularFirestore, private auth: AuthService) {
     this.auth.getUid().then( (userId) => {
-      this.tasksCollection = this.afs.collection<Task>('tasks',  ref => ref.where('plz', '==', this.auth.currentUser.plz));
+      this.tasksCollection = this.afs.collection<Task>('tasks',  ref => ref.where('plz', '==', this.auth.currentUser.plz) );
       this.tasks = this.tasksCollection.snapshotChanges().pipe(
           map(actions => {
             return actions.map(a => {
@@ -71,6 +71,36 @@ export class TaskService {
 
   deleteTask(id: string): Promise<void> {
     return this.tasksCollection.doc(id).delete();
+  }
+
+  acceptTask(task: Task): Promise<void> {
+    return new Promise<any>((resolve, reject) => {
+      this.auth.getUid().then( (userId: any) => {
+        userId = String(userId);
+        if(!task.applicants) task.applicants = [];
+        if(task.applicants.indexOf(userId) == -1){
+           task.applicants.push(userId);
+           return resolve(this.tasksCollection.doc(task.id).update({applicants: task.applicants}));
+        } else {
+          return resolve();
+        }
+      });
+    });
+  }
+
+  resignTask(task: Task): Promise<void> {
+    return new Promise<any>((resolve, reject) => {
+      this.auth.getUid().then( (userId: any) => {
+        userId = String(userId);
+        if(!task.applicants) task.applicants = [];
+        if(task.applicants.indexOf(userId) != -1){
+           task.applicants.splice(task.applicants.indexOf(userId),1);
+           return resolve(this.tasksCollection.doc(task.id).update({applicants: task.applicants}));
+        } else {
+          return resolve();
+        }
+      });
+    });
   }
 
 }
