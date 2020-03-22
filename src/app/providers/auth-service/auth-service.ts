@@ -47,7 +47,7 @@ export class AuthService {
         this.afAuth.auth.createUserWithEmailAndPassword(email,password)
             .then( (usercred) => {
               this.setUserData(usercred.user,displayName, plz);
-              const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+              const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${usercred.user.uid}`);
               userRef.ref.get().then((doc)=>{
                 // @ts-ignore
                 this.currentUser = doc.data();
