@@ -1,6 +1,13 @@
 # neighbors - Deine Nachbarschafts-App
 Auf den Postleitzahlbereich genaue Hilfsangebote und Hilfsanfragen in deiner Nachbarschaft. Engagiere dich lokal, helfe da wo du bist! In der Coronakrise - und was auch immer Hilfe benötigen wird.
 
+# App-Mockup
+
+![https://www.youtube.com/channel/UCxtqPI7UUJZSjEncOogfJaQ](https://github.com/geckse/yet-another-neighborhood-app/blob/master/git-assets/neighbors_video.png?raw=true)
+
+# Live Demo
+
+https://neighborsapp.io
 
 # Aktueller Stand des Prototyps
  - [x] Login mit Email & Register & Anonymer Login
@@ -17,4 +24,4 @@ Auf den Postleitzahlbereich genaue Hilfsangebote und Hilfsanfragen in deiner Nac
 # Team
 | Frontend | Backend | Design|
 |--|--|--|
-|[@geckse](https://github.com/geckse)|[@jumoog](https://github.com/jumoog)|[mrvn]([https://www.instagram.com/uandiexperience/](https://www.instagram.com/uandiexperience/)) |
+|[@geckse](https://github.com/geckse)|[@jumoog](https://github.com/jumoog)|[mrvn](https://www.instagram.com/uandiexperience/) |
