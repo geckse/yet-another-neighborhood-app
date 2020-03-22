@@ -1,6 +1,10 @@
 # neighbors - Deine Nachbarschafts-App
 Auf den Postleitzahlbereich genaue Hilfsangebote und Hilfsanfragen in deiner Nachbarschaft. Engagiere dich lokal, helfe da wo du bist! In der Coronakrise - und was auch immer Hilfe benötigen wird.
 
+# Projekt des #wirvsvirus Bundes-Hackathons
+## Challenge 34 "Nachbarschaftshilfe"
+![https://wirvsvirushackathon.org/](https://github.com/geckse/yet-another-neighborhood-app/blob/master/src/assets/hackathon-info-black.jpg?raw=true)
+
 # App-Mockup
 
 ![https://www.youtube.com/channel/UCxtqPI7UUJZSjEncOogfJaQ](https://github.com/geckse/yet-another-neighborhood-app/blob/master/git-assets/neighbors_video.png?raw=true)
@@ -8,6 +12,19 @@ Auf den Postleitzahlbereich genaue Hilfsangebote und Hilfsanfragen in deiner Nac
 # Live Demo
 
 https://neighborsapp.io
+
+# Quick Start
+
+### Install depencies
+```npm
+npm install
+```
+
+### Serve Application
+```npm
+ionic serve --platform ios
+```
+
 
 # Aktueller Stand des Prototyps
  - [x] Login mit Email & Register & Anonymer Login
