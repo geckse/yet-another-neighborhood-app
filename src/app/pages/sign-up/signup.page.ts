@@ -35,8 +35,7 @@ export class SignupPage implements OnInit {
   }
 
   async registerAccount(){
-    // @ts-ignore
-    if(String(parseInt(this.plz)).length != 5){
+    if (String(this.plz).length != 5) {
       const alert = await this.alertController.create({
         header: 'Ungültige Postleitzahl',
         subHeader: 'Bitte gebe eine gültige Postleitzahl an.',
