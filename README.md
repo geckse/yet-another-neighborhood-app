@@ -15,14 +15,25 @@ https://neighborsapp.io
 
 # Quick Start
 
+### environment.ts
+```npm
+src/environments/environment.sample.ts nach src/environments/environment.ts kopieren und Keys besorgen
+```
+
 ### Install depencies
 ```npm
 npm install
+npm i -g @ionic/cli
 ```
 
 ### Serve Application
 ```npm
 ionic serve --platform ios
+```
+
+### Build Application
+```npm
+ionic build
 ```
 
 
