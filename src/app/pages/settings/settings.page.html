@@ -24,7 +24,7 @@
   </ion-list-header>
 
   <ion-list *ngIf="auth">
-    
+
     <ion-item *ngIf="auth.currentUser?.displayName">
       <ion-label position="stacked">Name</ion-label>
       <ion-input [(ngModel)]="auth?.currentUser.displayName"></ion-input>
@@ -43,9 +43,20 @@
     <ion-label></ion-label>
   </ion-list-header>
 
+  <div class="ion-text-center ion-padding">
+    <p>Teil des <a href="https://twitter.com/search?q=%23WirvsVirusHack&src=recent_search_click" target="_blank">#wirvsvirus</a> Hackathons.
+    <br>Anfragen und alles andere gern an <a href="mailto: info@neighborsapp.io" style="color: #222;">info@neighborsapp.io</a>
+    </p>
+    <br>
+    <br>
+    <a href="https://wirvsvirushackathon.org/" target="_blank"><img class="logo" src="assets/hackathon-info-black.jpg" style="width: 70%; max-width: 180px; " /></a>
+    <br/>
+    <br/>
+    <a href="https://devpost.com/software/neighbors-rv1qsg" target="_blank" style=" text-decoration: none;">Vote für uns!</a>
+  </div>
+
   <ion-button fill="clear" expand="block" (click)="doLogout()">
     Logout
   </ion-button>
-
 
 </ion-content>
