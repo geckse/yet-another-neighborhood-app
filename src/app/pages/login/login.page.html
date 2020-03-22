@@ -2,10 +2,18 @@
 
   <ion-row class="ion-justify-content-center ion-align-items-center ion-text-center" style="min-height: 100vh;">
     <ion-col>
-      <div style="max-width: 380px; margin-left: auto; margin-right: auto;">
+      <div style="padding-top: 16vh; max-width: 380px; margin-left: auto; margin-right: auto;">
 
-        <img class="logo" src=""/>
+        <img class="logo" src="assets/full-logo.png" style="width: 70%; max-width: 350px;" />
+        <br>
+        <br>
+          <div class="ion-padding" style="background: rgba(255,255,255,0.1); color: #222; margin: 0 auto; max-width: 400px; display: block; font-size: 16px; border-radius: 8px;">
+            Bitte benutze keine echten Nutzerdaten!<br>
+            Dein Postleitzahl-Bereich ist bestimmt noch leer. Nutze für den Test gern die Postleitzahl <strong>12345</strong>.<br>Dort findest du Beispiel-Tasks.
+            <br>Anfragen und alles andere gern an <a href="mailto: info@neighborsapp.io" style="color: #222;">info@neighborsapp.io</a>
+          </div>
 
+        <br>
         <ion-list>
           <ion-item lines="none" class="ion-justify-content-center">
             <ion-icon name="person-outline"  slot="start"></ion-icon>
@@ -18,21 +26,29 @@
             <ion-input [(ngModel)]="password" type="password"></ion-input>
           </ion-item>
         </ion-list>
-
+        <br>
         <ion-button expand="block" color="white" (click)="signIn()">Einloggen <ion-icon slot="lock-open-outline"></ion-icon></ion-button>
 
-        <div style="min-height: 50px;"></div>
+        <div style="min-height: 30px;"></div>
 
         <ion-note color="white"><small>Noch kein Account?</small></ion-note>
         <ion-button color="white" fill="clear" expand="block" (click)="openRegisterPage()">Registrieren</ion-button>
+        <ion-button color="white" fill="clear" expand="block" (click)="continueAnon()">Ohne Account Weiter</ion-button>
+        <br>
+        <a href="https://wirvsvirushackathon.org/" target="_blank"><img class="logo" src="assets/hackathon-info.png" style="width: 70%; max-width: 180px; " /></a>
+        <br/>
+        <br/>
+        <a href="https://devpost.com/software/neighbors-rv1qsg" target="_blank" style="color: #fff; text-decoration: none;">Vote für uns!</a>
       </div>
     </ion-col>
   </ion-row>
 
 </ion-content>
 
+<!--
 <ion-footer>
     <div class="ion-padding">
       <ion-button color="white" fill="clear" expand="block" (click)="continueAnon()">Ohne Account Weiter</ion-button>
     </div>
 </ion-footer>
+-->
