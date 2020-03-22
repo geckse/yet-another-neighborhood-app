@@ -71,8 +71,7 @@ export class LoginPage implements OnInit {
         }, {
           text: 'Weiter',
           handler: async (data) => {
-
-            if(String(parseInt(data.plz)).length == 5){
+            if(String(data.plz).length == 5){
                 this.loading = await this.loadingController.create({
                     message: 'Lade...',
                 });
