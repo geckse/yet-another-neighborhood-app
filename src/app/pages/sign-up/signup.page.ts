@@ -30,6 +30,10 @@ export class SignupPage implements OnInit {
   ngOnInit() {
   }
 
+  async openRegisterPage() {
+    this.router.navigate(['/login'])
+  }
+
   async registerAccount(){
     // @ts-ignore
     if(String(parseInt(this.plz)).length != 5){
